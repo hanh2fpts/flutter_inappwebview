@@ -71,4 +71,10 @@ public class FlutterWebViewFactory: NSObject, FlutterPlatformViewFactory {
         
         return flutterWebView!
     }
+
+    // FIX CHÍNH LỖI TAP iOS 17/18+ (issue #2693)
+    // Cho phép WebView nhận gesture thay vì bị Flutter chặn
+    public override func gestureRecognizersBlockingPolicy() -> FlutterPlatformViewGestureRecognizersBlockingPolicy {
+        return .hitTest
+    }
 }
